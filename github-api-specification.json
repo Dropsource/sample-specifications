@@ -3,7 +3,7 @@
     "info": {
         "version": "",
         "title": "GitHub Organizer",
-        "description": "Manage repo issues and comments in your GitHub account. Manage repo issues and comments in your GitHub account."
+        "description": "Manage repo issues and comments in your GitHub account."
     },
     "host": "api.github.com",
     "schemes": [
