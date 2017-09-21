@@ -1,0 +1,2553 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "",
+        "title": "GitHub Organizer",
+        "description": "Manage repo issues and comments in your GitHub account. Manage repo issues and comments in your GitHub account."
+    },
+    "host": "api.github.com",
+    "schemes": [
+        "https"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "securityDefinitions": {
+        "access_token": {
+            "name": "access_token",
+            "type": "apiKey",
+            "in": "query"
+        }
+    },
+    "paths": {
+        "/repos/{owner}/{repo}/issues/{number}/comments": {
+            "parameters": [
+                {
+                    "name": "owner",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "repo",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "number",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "post": {
+                "operationId": "POST_repos-owner-repo-issues-number-comments",
+                "summary": "Create Comment",
+                "tags": [
+                    "Repos"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "body": {
+                                    "type": "string"
+                                }
+                            },
+                            "example": {
+                                "body": "Me too"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "url": {
+                                    "type": "string"
+                                },
+                                "html_url": {
+                                    "type": "string"
+                                },
+                                "body": {
+                                    "type": "string"
+                                },
+                                "user": {
+                                    "type": "object",
+                                    "properties": {
+                                        "login": {
+                                            "type": "string"
+                                        },
+                                        "id": {
+                                            "type": "integer"
+                                        },
+                                        "avatar_url": {
+                                            "type": "string"
+                                        },
+                                        "gravatar_id": {
+                                            "type": "string"
+                                        },
+                                        "url": {
+                                            "type": "string"
+                                        },
+                                        "html_url": {
+                                            "type": "string"
+                                        },
+                                        "followers_url": {
+                                            "type": "string"
+                                        },
+                                        "following_url": {
+                                            "type": "string"
+                                        },
+                                        "gists_url": {
+                                            "type": "string"
+                                        },
+                                        "starred_url": {
+                                            "type": "string"
+                                        },
+                                        "subscriptions_url": {
+                                            "type": "string"
+                                        },
+                                        "organizations_url": {
+                                            "type": "string"
+                                        },
+                                        "repos_url": {
+                                            "type": "string"
+                                        },
+                                        "events_url": {
+                                            "type": "string"
+                                        },
+                                        "received_events_url": {
+                                            "type": "string"
+                                        },
+                                        "type": {
+                                            "type": "string"
+                                        },
+                                        "site_admin": {
+                                            "type": "boolean"
+                                        }
+                                    }
+                                },
+                                "created_at": {
+                                    "type": "string"
+                                },
+                                "updated_at": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "examples": {
+                            "application/json": {
+                                "message": "Body should be a JSON object"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string"
+                                },
+                                "documentation_url": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "examples": {
+                            "application/json": {
+                                "message": "Bad credentials",
+                                "documentation_url": "https://developer.github.com/v3"
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string"
+                                },
+                                "documentation_url": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "examples": {
+                            "application/json": {
+                                "message": "Maximum number of login attempts exceeded. Please try again later.",
+                                "documentation_url": "https://developer.github.com/v3"
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string"
+                                },
+                                "errors": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "resource": {
+                                                "type": "string"
+                                            },
+                                            "field": {
+                                                "type": "string"
+                                            },
+                                            "code": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "access_token": []
+                    }
+                ]
+            },
+            "get": {
+                "operationId": "GET_repos-owner-repo-issues-number-comments",
+                "summary": "Get Issue Comments",
+                "tags": [
+                    "Repos"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "integer"
+                                    },
+                                    "url": {
+                                        "type": "string"
+                                    },
+                                    "html_url": {
+                                        "type": "string"
+                                    },
+                                    "body": {
+                                        "type": "string"
+                                    },
+                                    "user": {
+                                        "type": "object",
+                                        "properties": {
+                                            "login": {
+                                                "type": "string"
+                                            },
+                                            "id": {
+                                                "type": "integer"
+                                            },
+                                            "avatar_url": {
+                                                "type": "string"
+                                            },
+                                            "gravatar_id": {
+                                                "type": "string"
+                                            },
+                                            "url": {
+                                                "type": "string"
+                                            },
+                                            "html_url": {
+                                                "type": "string"
+                                            },
+                                            "followers_url": {
+                                                "type": "string"
+                                            },
+                                            "following_url": {
+                                                "type": "string"
+                                            },
+                                            "gists_url": {
+                                                "type": "string"
+                                            },
+                                            "starred_url": {
+                                                "type": "string"
+                                            },
+                                            "subscriptions_url": {
+                                                "type": "string"
+                                            },
+                                            "organizations_url": {
+                                                "type": "string"
+                                            },
+                                            "repos_url": {
+                                                "type": "string"
+                                            },
+                                            "events_url": {
+                                                "type": "string"
+                                            },
+                                            "received_events_url": {
+                                                "type": "string"
+                                            },
+                                            "type": {
+                                                "type": "string"
+                                            },
+                                            "site_admin": {
+                                                "type": "boolean"
+                                            }
+                                        }
+                                    },
+                                    "created_at": {
+                                        "type": "string"
+                                    },
+                                    "updated_at": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "examples": {
+                            "application/json": {
+                                "message": "Body should be a JSON object"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string"
+                                },
+                                "documentation_url": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "examples": {
+                            "application/json": {
+                                "message": "Bad credentials",
+                                "documentation_url": "https://developer.github.com/v3"
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string"
+                                },
+                                "documentation_url": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "examples": {
+                            "application/json": {
+                                "message": "Maximum number of login attempts exceeded. Please try again later.",
+                                "documentation_url": "https://developer.github.com/v3"
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string"
+                                },
+                                "errors": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "resource": {
+                                                "type": "string"
+                                            },
+                                            "field": {
+                                                "type": "string"
+                                            },
+                                            "code": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "access_token": []
+                    }
+                ]
+            }
+        },
+        "/repos/{owner}/{repo}/issues": {
+            "parameters": [
+                {
+                    "name": "owner",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "repo",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "get": {
+                "operationId": "GET_repos-owner-repo-issues",
+                "summary": "Get Repo Issues",
+                "tags": [
+                    "Repos"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "integer"
+                                    },
+                                    "url": {
+                                        "type": "string"
+                                    },
+                                    "repository_url": {
+                                        "type": "string"
+                                    },
+                                    "labels_url": {
+                                        "type": "string"
+                                    },
+                                    "comments_url": {
+                                        "type": "string"
+                                    },
+                                    "events_url": {
+                                        "type": "string"
+                                    },
+                                    "html_url": {
+                                        "type": "string"
+                                    },
+                                    "number": {
+                                        "type": "integer"
+                                    },
+                                    "state": {
+                                        "type": "string"
+                                    },
+                                    "title": {
+                                        "type": "string"
+                                    },
+                                    "body": {
+                                        "type": "string"
+                                    },
+                                    "user": {
+                                        "type": "object",
+                                        "properties": {
+                                            "login": {
+                                                "type": "string"
+                                            },
+                                            "id": {
+                                                "type": "integer"
+                                            },
+                                            "avatar_url": {
+                                                "type": "string"
+                                            },
+                                            "gravatar_id": {
+                                                "type": "string"
+                                            },
+                                            "url": {
+                                                "type": "string"
+                                            },
+                                            "html_url": {
+                                                "type": "string"
+                                            },
+                                            "followers_url": {
+                                                "type": "string"
+                                            },
+                                            "following_url": {
+                                                "type": "string"
+                                            },
+                                            "gists_url": {
+                                                "type": "string"
+                                            },
+                                            "starred_url": {
+                                                "type": "string"
+                                            },
+                                            "subscriptions_url": {
+                                                "type": "string"
+                                            },
+                                            "organizations_url": {
+                                                "type": "string"
+                                            },
+                                            "repos_url": {
+                                                "type": "string"
+                                            },
+                                            "events_url": {
+                                                "type": "string"
+                                            },
+                                            "received_events_url": {
+                                                "type": "string"
+                                            },
+                                            "type": {
+                                                "type": "string"
+                                            },
+                                            "site_admin": {
+                                                "type": "boolean"
+                                            }
+                                        }
+                                    },
+                                    "labels": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "url": {
+                                                    "type": "string"
+                                                },
+                                                "name": {
+                                                    "type": "string"
+                                                },
+                                                "color": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "assignee": {
+                                        "type": "object",
+                                        "properties": {
+                                            "login": {
+                                                "type": "string"
+                                            },
+                                            "id": {
+                                                "type": "integer"
+                                            },
+                                            "avatar_url": {
+                                                "type": "string"
+                                            },
+                                            "gravatar_id": {
+                                                "type": "string"
+                                            },
+                                            "url": {
+                                                "type": "string"
+                                            },
+                                            "html_url": {
+                                                "type": "string"
+                                            },
+                                            "followers_url": {
+                                                "type": "string"
+                                            },
+                                            "following_url": {
+                                                "type": "string"
+                                            },
+                                            "gists_url": {
+                                                "type": "string"
+                                            },
+                                            "starred_url": {
+                                                "type": "string"
+                                            },
+                                            "subscriptions_url": {
+                                                "type": "string"
+                                            },
+                                            "organizations_url": {
+                                                "type": "string"
+                                            },
+                                            "repos_url": {
+                                                "type": "string"
+                                            },
+                                            "events_url": {
+                                                "type": "string"
+                                            },
+                                            "received_events_url": {
+                                                "type": "string"
+                                            },
+                                            "type": {
+                                                "type": "string"
+                                            },
+                                            "site_admin": {
+                                                "type": "boolean"
+                                            }
+                                        }
+                                    },
+                                    "milestone": {
+                                        "type": "object",
+                                        "properties": {
+                                            "url": {
+                                                "type": "string"
+                                            },
+                                            "html_url": {
+                                                "type": "string"
+                                            },
+                                            "labels_url": {
+                                                "type": "string"
+                                            },
+                                            "id": {
+                                                "type": "integer"
+                                            },
+                                            "number": {
+                                                "type": "integer"
+                                            },
+                                            "state": {
+                                                "type": "string"
+                                            },
+                                            "title": {
+                                                "type": "string"
+                                            },
+                                            "description": {
+                                                "type": "string"
+                                            },
+                                            "creator": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "login": {
+                                                        "type": "string"
+                                                    },
+                                                    "id": {
+                                                        "type": "integer"
+                                                    },
+                                                    "avatar_url": {
+                                                        "type": "string"
+                                                    },
+                                                    "gravatar_id": {
+                                                        "type": "string"
+                                                    },
+                                                    "url": {
+                                                        "type": "string"
+                                                    },
+                                                    "html_url": {
+                                                        "type": "string"
+                                                    },
+                                                    "followers_url": {
+                                                        "type": "string"
+                                                    },
+                                                    "following_url": {
+                                                        "type": "string"
+                                                    },
+                                                    "gists_url": {
+                                                        "type": "string"
+                                                    },
+                                                    "starred_url": {
+                                                        "type": "string"
+                                                    },
+                                                    "subscriptions_url": {
+                                                        "type": "string"
+                                                    },
+                                                    "organizations_url": {
+                                                        "type": "string"
+                                                    },
+                                                    "repos_url": {
+                                                        "type": "string"
+                                                    },
+                                                    "events_url": {
+                                                        "type": "string"
+                                                    },
+                                                    "received_events_url": {
+                                                        "type": "string"
+                                                    },
+                                                    "type": {
+                                                        "type": "string"
+                                                    },
+                                                    "site_admin": {
+                                                        "type": "boolean"
+                                                    }
+                                                }
+                                            },
+                                            "open_issues": {
+                                                "type": "integer"
+                                            },
+                                            "closed_issues": {
+                                                "type": "integer"
+                                            },
+                                            "created_at": {
+                                                "type": "string"
+                                            },
+                                            "updated_at": {
+                                                "type": "string"
+                                            },
+                                            "closed_at": {
+                                                "type": "string"
+                                            },
+                                            "due_on": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "locked": {
+                                        "type": "boolean"
+                                    },
+                                    "comments": {
+                                        "type": "integer"
+                                    },
+                                    "pull_request": {
+                                        "type": "object",
+                                        "properties": {
+                                            "url": {
+                                                "type": "string"
+                                            },
+                                            "html_url": {
+                                                "type": "string"
+                                            },
+                                            "diff_url": {
+                                                "type": "string"
+                                            },
+                                            "patch_url": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "closed_at": {
+                                        "type": "null"
+                                    },
+                                    "created_at": {
+                                        "type": "string"
+                                    },
+                                    "updated_at": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "examples": {
+                            "application/json": {
+                                "message": "Body should be a JSON object"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string"
+                                },
+                                "documentation_url": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "examples": {
+                            "application/json": {
+                                "message": "Bad credentials",
+                                "documentation_url": "https://developer.github.com/v3"
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string"
+                                },
+                                "documentation_url": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "examples": {
+                            "application/json": {
+                                "message": "Maximum number of login attempts exceeded. Please try again later.",
+                                "documentation_url": "https://developer.github.com/v3"
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string"
+                                },
+                                "errors": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "resource": {
+                                                "type": "string"
+                                            },
+                                            "field": {
+                                                "type": "string"
+                                            },
+                                            "code": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "access_token": []
+                    }
+                ]
+            },
+            "post": {
+                "operationId": "POST_repos-owner-repo-issues",
+                "summary": "Create Issue",
+                "tags": [
+                    "Repos"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "title": {
+                                    "type": "string"
+                                },
+                                "body": {
+                                    "type": "string"
+                                },
+                                "milestone": {
+                                    "type": "integer"
+                                },
+                                "labels": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "required": [
+                                "title",
+                                "body"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "url": {
+                                    "type": "string"
+                                },
+                                "repository_url": {
+                                    "type": "string"
+                                },
+                                "labels_url": {
+                                    "type": "string"
+                                },
+                                "comments_url": {
+                                    "type": "string"
+                                },
+                                "events_url": {
+                                    "type": "string"
+                                },
+                                "html_url": {
+                                    "type": "string"
+                                },
+                                "number": {
+                                    "type": "integer"
+                                },
+                                "state": {
+                                    "type": "string"
+                                },
+                                "title": {
+                                    "type": "string"
+                                },
+                                "body": {
+                                    "type": "string"
+                                },
+                                "user": {
+                                    "type": "object",
+                                    "properties": {
+                                        "login": {
+                                            "type": "string"
+                                        },
+                                        "id": {
+                                            "type": "integer"
+                                        },
+                                        "avatar_url": {
+                                            "type": "string"
+                                        },
+                                        "gravatar_id": {
+                                            "type": "string"
+                                        },
+                                        "url": {
+                                            "type": "string"
+                                        },
+                                        "html_url": {
+                                            "type": "string"
+                                        },
+                                        "followers_url": {
+                                            "type": "string"
+                                        },
+                                        "following_url": {
+                                            "type": "string"
+                                        },
+                                        "gists_url": {
+                                            "type": "string"
+                                        },
+                                        "starred_url": {
+                                            "type": "string"
+                                        },
+                                        "subscriptions_url": {
+                                            "type": "string"
+                                        },
+                                        "organizations_url": {
+                                            "type": "string"
+                                        },
+                                        "repos_url": {
+                                            "type": "string"
+                                        },
+                                        "events_url": {
+                                            "type": "string"
+                                        },
+                                        "received_events_url": {
+                                            "type": "string"
+                                        },
+                                        "type": {
+                                            "type": "string"
+                                        },
+                                        "site_admin": {
+                                            "type": "boolean"
+                                        }
+                                    }
+                                },
+                                "labels": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "url": {
+                                                "type": "string"
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "color": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                },
+                                "assignee": {
+                                    "type": "object",
+                                    "properties": {
+                                        "login": {
+                                            "type": "string"
+                                        },
+                                        "id": {
+                                            "type": "integer"
+                                        },
+                                        "avatar_url": {
+                                            "type": "string"
+                                        },
+                                        "gravatar_id": {
+                                            "type": "string"
+                                        },
+                                        "url": {
+                                            "type": "string"
+                                        },
+                                        "html_url": {
+                                            "type": "string"
+                                        },
+                                        "followers_url": {
+                                            "type": "string"
+                                        },
+                                        "following_url": {
+                                            "type": "string"
+                                        },
+                                        "gists_url": {
+                                            "type": "string"
+                                        },
+                                        "starred_url": {
+                                            "type": "string"
+                                        },
+                                        "subscriptions_url": {
+                                            "type": "string"
+                                        },
+                                        "organizations_url": {
+                                            "type": "string"
+                                        },
+                                        "repos_url": {
+                                            "type": "string"
+                                        },
+                                        "events_url": {
+                                            "type": "string"
+                                        },
+                                        "received_events_url": {
+                                            "type": "string"
+                                        },
+                                        "type": {
+                                            "type": "string"
+                                        },
+                                        "site_admin": {
+                                            "type": "boolean"
+                                        }
+                                    }
+                                },
+                                "milestone": {
+                                    "type": "object",
+                                    "properties": {
+                                        "url": {
+                                            "type": "string"
+                                        },
+                                        "html_url": {
+                                            "type": "string"
+                                        },
+                                        "labels_url": {
+                                            "type": "string"
+                                        },
+                                        "id": {
+                                            "type": "integer"
+                                        },
+                                        "number": {
+                                            "type": "integer"
+                                        },
+                                        "state": {
+                                            "type": "string"
+                                        },
+                                        "title": {
+                                            "type": "string"
+                                        },
+                                        "description": {
+                                            "type": "string"
+                                        },
+                                        "creator": {
+                                            "type": "object",
+                                            "properties": {
+                                                "login": {
+                                                    "type": "string"
+                                                },
+                                                "id": {
+                                                    "type": "integer"
+                                                },
+                                                "avatar_url": {
+                                                    "type": "string"
+                                                },
+                                                "gravatar_id": {
+                                                    "type": "string"
+                                                },
+                                                "url": {
+                                                    "type": "string"
+                                                },
+                                                "html_url": {
+                                                    "type": "string"
+                                                },
+                                                "followers_url": {
+                                                    "type": "string"
+                                                },
+                                                "following_url": {
+                                                    "type": "string"
+                                                },
+                                                "gists_url": {
+                                                    "type": "string"
+                                                },
+                                                "starred_url": {
+                                                    "type": "string"
+                                                },
+                                                "subscriptions_url": {
+                                                    "type": "string"
+                                                },
+                                                "organizations_url": {
+                                                    "type": "string"
+                                                },
+                                                "repos_url": {
+                                                    "type": "string"
+                                                },
+                                                "events_url": {
+                                                    "type": "string"
+                                                },
+                                                "received_events_url": {
+                                                    "type": "string"
+                                                },
+                                                "type": {
+                                                    "type": "string"
+                                                },
+                                                "site_admin": {
+                                                    "type": "boolean"
+                                                }
+                                            }
+                                        },
+                                        "open_issues": {
+                                            "type": "integer"
+                                        },
+                                        "closed_issues": {
+                                            "type": "integer"
+                                        },
+                                        "created_at": {
+                                            "type": "string"
+                                        },
+                                        "updated_at": {
+                                            "type": "string"
+                                        },
+                                        "closed_at": {
+                                            "type": "string"
+                                        },
+                                        "due_on": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "locked": {
+                                    "type": "boolean"
+                                },
+                                "comments": {
+                                    "type": "integer"
+                                },
+                                "pull_request": {
+                                    "type": "object",
+                                    "properties": {
+                                        "url": {
+                                            "type": "string"
+                                        },
+                                        "html_url": {
+                                            "type": "string"
+                                        },
+                                        "diff_url": {
+                                            "type": "string"
+                                        },
+                                        "patch_url": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "closed_at": {
+                                    "type": "null"
+                                },
+                                "created_at": {
+                                    "type": "string"
+                                },
+                                "updated_at": {
+                                    "type": "string"
+                                },
+                                "closed_by": {
+                                    "type": "object",
+                                    "properties": {
+                                        "login": {
+                                            "type": "string"
+                                        },
+                                        "id": {
+                                            "type": "integer"
+                                        },
+                                        "avatar_url": {
+                                            "type": "string"
+                                        },
+                                        "gravatar_id": {
+                                            "type": "string"
+                                        },
+                                        "url": {
+                                            "type": "string"
+                                        },
+                                        "html_url": {
+                                            "type": "string"
+                                        },
+                                        "followers_url": {
+                                            "type": "string"
+                                        },
+                                        "following_url": {
+                                            "type": "string"
+                                        },
+                                        "gists_url": {
+                                            "type": "string"
+                                        },
+                                        "starred_url": {
+                                            "type": "string"
+                                        },
+                                        "subscriptions_url": {
+                                            "type": "string"
+                                        },
+                                        "organizations_url": {
+                                            "type": "string"
+                                        },
+                                        "repos_url": {
+                                            "type": "string"
+                                        },
+                                        "events_url": {
+                                            "type": "string"
+                                        },
+                                        "received_events_url": {
+                                            "type": "string"
+                                        },
+                                        "type": {
+                                            "type": "string"
+                                        },
+                                        "site_admin": {
+                                            "type": "boolean"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "examples": {
+                            "application/json": {
+                                "message": "Body should be a JSON object"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string"
+                                },
+                                "documentation_url": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "examples": {
+                            "application/json": {
+                                "message": "Bad credentials",
+                                "documentation_url": "https://developer.github.com/v3"
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string"
+                                },
+                                "documentation_url": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "examples": {
+                            "application/json": {
+                                "message": "Maximum number of login attempts exceeded. Please try again later.",
+                                "documentation_url": "https://developer.github.com/v3"
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string"
+                                },
+                                "errors": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "resource": {
+                                                "type": "string"
+                                            },
+                                            "field": {
+                                                "type": "string"
+                                            },
+                                            "code": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "access_token": []
+                    }
+                ]
+            }
+        },
+        "/repos/{owner}/{repo}/issues/{number}": {
+            "parameters": [
+                {
+                    "name": "owner",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "repo",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "number",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "patch": {
+                "operationId": "PATCH_repos-owner-repo-issues-number",
+                "summary": "Edit Issue",
+                "tags": [
+                    "Repos"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "title": {
+                                    "type": "string"
+                                },
+                                "body": {
+                                    "type": "string"
+                                },
+                                "milestone": {
+                                    "type": "integer"
+                                },
+                                "state": {
+                                    "type": "string"
+                                },
+                                "labels": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "url": {
+                                    "type": "string"
+                                },
+                                "repository_url": {
+                                    "type": "string"
+                                },
+                                "labels_url": {
+                                    "type": "string"
+                                },
+                                "comments_url": {
+                                    "type": "string"
+                                },
+                                "events_url": {
+                                    "type": "string"
+                                },
+                                "html_url": {
+                                    "type": "string"
+                                },
+                                "number": {
+                                    "type": "integer"
+                                },
+                                "state": {
+                                    "type": "string"
+                                },
+                                "title": {
+                                    "type": "string"
+                                },
+                                "body": {
+                                    "type": "string"
+                                },
+                                "user": {
+                                    "type": "object",
+                                    "properties": {
+                                        "login": {
+                                            "type": "string"
+                                        },
+                                        "id": {
+                                            "type": "integer"
+                                        },
+                                        "avatar_url": {
+                                            "type": "string"
+                                        },
+                                        "gravatar_id": {
+                                            "type": "string"
+                                        },
+                                        "url": {
+                                            "type": "string"
+                                        },
+                                        "html_url": {
+                                            "type": "string"
+                                        },
+                                        "followers_url": {
+                                            "type": "string"
+                                        },
+                                        "following_url": {
+                                            "type": "string"
+                                        },
+                                        "gists_url": {
+                                            "type": "string"
+                                        },
+                                        "starred_url": {
+                                            "type": "string"
+                                        },
+                                        "subscriptions_url": {
+                                            "type": "string"
+                                        },
+                                        "organizations_url": {
+                                            "type": "string"
+                                        },
+                                        "repos_url": {
+                                            "type": "string"
+                                        },
+                                        "events_url": {
+                                            "type": "string"
+                                        },
+                                        "received_events_url": {
+                                            "type": "string"
+                                        },
+                                        "type": {
+                                            "type": "string"
+                                        },
+                                        "site_admin": {
+                                            "type": "boolean"
+                                        }
+                                    }
+                                },
+                                "labels": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "url": {
+                                                "type": "string"
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "color": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                },
+                                "assignee": {
+                                    "type": "object",
+                                    "properties": {
+                                        "login": {
+                                            "type": "string"
+                                        },
+                                        "id": {
+                                            "type": "integer"
+                                        },
+                                        "avatar_url": {
+                                            "type": "string"
+                                        },
+                                        "gravatar_id": {
+                                            "type": "string"
+                                        },
+                                        "url": {
+                                            "type": "string"
+                                        },
+                                        "html_url": {
+                                            "type": "string"
+                                        },
+                                        "followers_url": {
+                                            "type": "string"
+                                        },
+                                        "following_url": {
+                                            "type": "string"
+                                        },
+                                        "gists_url": {
+                                            "type": "string"
+                                        },
+                                        "starred_url": {
+                                            "type": "string"
+                                        },
+                                        "subscriptions_url": {
+                                            "type": "string"
+                                        },
+                                        "organizations_url": {
+                                            "type": "string"
+                                        },
+                                        "repos_url": {
+                                            "type": "string"
+                                        },
+                                        "events_url": {
+                                            "type": "string"
+                                        },
+                                        "received_events_url": {
+                                            "type": "string"
+                                        },
+                                        "type": {
+                                            "type": "string"
+                                        },
+                                        "site_admin": {
+                                            "type": "boolean"
+                                        }
+                                    }
+                                },
+                                "milestone": {
+                                    "type": "object",
+                                    "properties": {
+                                        "url": {
+                                            "type": "string"
+                                        },
+                                        "html_url": {
+                                            "type": "string"
+                                        },
+                                        "labels_url": {
+                                            "type": "string"
+                                        },
+                                        "id": {
+                                            "type": "integer"
+                                        },
+                                        "number": {
+                                            "type": "integer"
+                                        },
+                                        "state": {
+                                            "type": "string"
+                                        },
+                                        "title": {
+                                            "type": "string"
+                                        },
+                                        "description": {
+                                            "type": "string"
+                                        },
+                                        "creator": {
+                                            "type": "object",
+                                            "properties": {
+                                                "login": {
+                                                    "type": "string"
+                                                },
+                                                "id": {
+                                                    "type": "integer"
+                                                },
+                                                "avatar_url": {
+                                                    "type": "string"
+                                                },
+                                                "gravatar_id": {
+                                                    "type": "string"
+                                                },
+                                                "url": {
+                                                    "type": "string"
+                                                },
+                                                "html_url": {
+                                                    "type": "string"
+                                                },
+                                                "followers_url": {
+                                                    "type": "string"
+                                                },
+                                                "following_url": {
+                                                    "type": "string"
+                                                },
+                                                "gists_url": {
+                                                    "type": "string"
+                                                },
+                                                "starred_url": {
+                                                    "type": "string"
+                                                },
+                                                "subscriptions_url": {
+                                                    "type": "string"
+                                                },
+                                                "organizations_url": {
+                                                    "type": "string"
+                                                },
+                                                "repos_url": {
+                                                    "type": "string"
+                                                },
+                                                "events_url": {
+                                                    "type": "string"
+                                                },
+                                                "received_events_url": {
+                                                    "type": "string"
+                                                },
+                                                "type": {
+                                                    "type": "string"
+                                                },
+                                                "site_admin": {
+                                                    "type": "boolean"
+                                                }
+                                            }
+                                        },
+                                        "open_issues": {
+                                            "type": "integer"
+                                        },
+                                        "closed_issues": {
+                                            "type": "integer"
+                                        },
+                                        "created_at": {
+                                            "type": "string"
+                                        },
+                                        "updated_at": {
+                                            "type": "string"
+                                        },
+                                        "closed_at": {
+                                            "type": "string"
+                                        },
+                                        "due_on": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "locked": {
+                                    "type": "boolean"
+                                },
+                                "comments": {
+                                    "type": "integer"
+                                },
+                                "pull_request": {
+                                    "type": "object",
+                                    "properties": {
+                                        "url": {
+                                            "type": "string"
+                                        },
+                                        "html_url": {
+                                            "type": "string"
+                                        },
+                                        "diff_url": {
+                                            "type": "string"
+                                        },
+                                        "patch_url": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "closed_at": {
+                                    "type": "null"
+                                },
+                                "created_at": {
+                                    "type": "string"
+                                },
+                                "updated_at": {
+                                    "type": "string"
+                                },
+                                "closed_by": {
+                                    "type": "object",
+                                    "properties": {
+                                        "login": {
+                                            "type": "string"
+                                        },
+                                        "id": {
+                                            "type": "integer"
+                                        },
+                                        "avatar_url": {
+                                            "type": "string"
+                                        },
+                                        "gravatar_id": {
+                                            "type": "string"
+                                        },
+                                        "url": {
+                                            "type": "string"
+                                        },
+                                        "html_url": {
+                                            "type": "string"
+                                        },
+                                        "followers_url": {
+                                            "type": "string"
+                                        },
+                                        "following_url": {
+                                            "type": "string"
+                                        },
+                                        "gists_url": {
+                                            "type": "string"
+                                        },
+                                        "starred_url": {
+                                            "type": "string"
+                                        },
+                                        "subscriptions_url": {
+                                            "type": "string"
+                                        },
+                                        "organizations_url": {
+                                            "type": "string"
+                                        },
+                                        "repos_url": {
+                                            "type": "string"
+                                        },
+                                        "events_url": {
+                                            "type": "string"
+                                        },
+                                        "received_events_url": {
+                                            "type": "string"
+                                        },
+                                        "type": {
+                                            "type": "string"
+                                        },
+                                        "site_admin": {
+                                            "type": "boolean"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "examples": {
+                            "application/json": {
+                                "message": "Body should be a JSON object"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string"
+                                },
+                                "documentation_url": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "examples": {
+                            "application/json": {
+                                "message": "Bad credentials",
+                                "documentation_url": "https://developer.github.com/v3"
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string"
+                                },
+                                "documentation_url": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "examples": {
+                            "application/json": {
+                                "message": "Maximum number of login attempts exceeded. Please try again later.",
+                                "documentation_url": "https://developer.github.com/v3"
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string"
+                                },
+                                "errors": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "resource": {
+                                                "type": "string"
+                                            },
+                                            "field": {
+                                                "type": "string"
+                                            },
+                                            "code": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "access_token": []
+                    }
+                ]
+            }
+        },
+        "/repos/{owner}/{repo}/issues/comments/{id}": {
+            "parameters": [
+                {
+                    "name": "owner",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "repo",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "patch": {
+                "operationId": "PATCH_repos-owner-repo-issues-comments-id",
+                "summary": "Edit Comment",
+                "tags": [
+                    "Repos"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "body": {
+                                    "type": "string"
+                                }
+                            },
+                            "example": {
+                                "body": "Me too"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "url": {
+                                    "type": "string"
+                                },
+                                "html_url": {
+                                    "type": "string"
+                                },
+                                "body": {
+                                    "type": "string"
+                                },
+                                "user": {
+                                    "type": "object",
+                                    "properties": {
+                                        "login": {
+                                            "type": "string"
+                                        },
+                                        "id": {
+                                            "type": "integer"
+                                        },
+                                        "avatar_url": {
+                                            "type": "string"
+                                        },
+                                        "gravatar_id": {
+                                            "type": "string"
+                                        },
+                                        "url": {
+                                            "type": "string"
+                                        },
+                                        "html_url": {
+                                            "type": "string"
+                                        },
+                                        "followers_url": {
+                                            "type": "string"
+                                        },
+                                        "following_url": {
+                                            "type": "string"
+                                        },
+                                        "gists_url": {
+                                            "type": "string"
+                                        },
+                                        "starred_url": {
+                                            "type": "string"
+                                        },
+                                        "subscriptions_url": {
+                                            "type": "string"
+                                        },
+                                        "organizations_url": {
+                                            "type": "string"
+                                        },
+                                        "repos_url": {
+                                            "type": "string"
+                                        },
+                                        "events_url": {
+                                            "type": "string"
+                                        },
+                                        "received_events_url": {
+                                            "type": "string"
+                                        },
+                                        "type": {
+                                            "type": "string"
+                                        },
+                                        "site_admin": {
+                                            "type": "boolean"
+                                        }
+                                    }
+                                },
+                                "created_at": {
+                                    "type": "string"
+                                },
+                                "updated_at": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "examples": {
+                            "application/json": {
+                                "message": "Body should be a JSON object"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string"
+                                },
+                                "documentation_url": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "examples": {
+                            "application/json": {
+                                "message": "Bad credentials",
+                                "documentation_url": "https://developer.github.com/v3"
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string"
+                                },
+                                "documentation_url": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "examples": {
+                            "application/json": {
+                                "message": "Maximum number of login attempts exceeded. Please try again later.",
+                                "documentation_url": "https://developer.github.com/v3"
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string"
+                                },
+                                "errors": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "resource": {
+                                                "type": "string"
+                                            },
+                                            "field": {
+                                                "type": "string"
+                                            },
+                                            "code": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "access_token": []
+                    }
+                ]
+            },
+            "delete": {
+                "operationId": "DELETE_repos-owner-repo-issues-comments-id",
+                "summary": "Delete Comment",
+                "tags": [
+                    "Repos"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Deleted"
+                    },
+                    "400": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "examples": {
+                            "application/json": {
+                                "message": "Body should be a JSON object"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string"
+                                },
+                                "documentation_url": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "examples": {
+                            "application/json": {
+                                "message": "Bad credentials",
+                                "documentation_url": "https://developer.github.com/v3"
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string"
+                                },
+                                "documentation_url": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "examples": {
+                            "application/json": {
+                                "message": "Maximum number of login attempts exceeded. Please try again later.",
+                                "documentation_url": "https://developer.github.com/v3"
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string"
+                                },
+                                "errors": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "resource": {
+                                                "type": "string"
+                                            },
+                                            "field": {
+                                                "type": "string"
+                                            },
+                                            "code": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "access_token": []
+                    }
+                ]
+            }
+        },
+        "/user/repos": {
+            "get": {
+                "operationId": "GET_user-repos",
+                "summary": "Get Repos",
+                "tags": [
+                    "User"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "integer"
+                                    },
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "full_name": {
+                                        "type": "string"
+                                    },
+                                    "owner": {
+                                        "type": "object",
+                                        "properties": {
+                                            "login": {
+                                                "type": "string"
+                                            },
+                                            "id": {
+                                                "type": "integer"
+                                            },
+                                            "avatar_url": {
+                                                "type": "string"
+                                            },
+                                            "gravatar_id": {
+                                                "type": "string"
+                                            },
+                                            "url": {
+                                                "type": "string"
+                                            },
+                                            "html_url": {
+                                                "type": "string"
+                                            },
+                                            "followers_url": {
+                                                "type": "string"
+                                            },
+                                            "following_url": {
+                                                "type": "string"
+                                            },
+                                            "gists_url": {
+                                                "type": "string"
+                                            },
+                                            "starred_url": {
+                                                "type": "string"
+                                            },
+                                            "subscriptions_url": {
+                                                "type": "string"
+                                            },
+                                            "organizations_url": {
+                                                "type": "string"
+                                            },
+                                            "repos_url": {
+                                                "type": "string"
+                                            },
+                                            "events_url": {
+                                                "type": "string"
+                                            },
+                                            "received_events_url": {
+                                                "type": "string"
+                                            },
+                                            "type": {
+                                                "type": "string"
+                                            },
+                                            "site_admin": {
+                                                "type": "boolean"
+                                            }
+                                        }
+                                    },
+                                    "private": {
+                                        "type": "boolean"
+                                    },
+                                    "html_url": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "null"
+                                    },
+                                    "fork": {
+                                        "type": "boolean"
+                                    },
+                                    "url": {
+                                        "type": "string"
+                                    },
+                                    "forks_url": {
+                                        "type": "string"
+                                    },
+                                    "keys_url": {
+                                        "type": "string"
+                                    },
+                                    "collaborators_url": {
+                                        "type": "string"
+                                    },
+                                    "teams_url": {
+                                        "type": "string"
+                                    },
+                                    "hooks_url": {
+                                        "type": "string"
+                                    },
+                                    "issue_events_url": {
+                                        "type": "string"
+                                    },
+                                    "events_url": {
+                                        "type": "string"
+                                    },
+                                    "assignees_url": {
+                                        "type": "string"
+                                    },
+                                    "branches_url": {
+                                        "type": "string"
+                                    },
+                                    "tags_url": {
+                                        "type": "string"
+                                    },
+                                    "blobs_url": {
+                                        "type": "string"
+                                    },
+                                    "git_tags_url": {
+                                        "type": "string"
+                                    },
+                                    "git_refs_url": {
+                                        "type": "string"
+                                    },
+                                    "trees_url": {
+                                        "type": "string"
+                                    },
+                                    "statuses_url": {
+                                        "type": "string"
+                                    },
+                                    "languages_url": {
+                                        "type": "string"
+                                    },
+                                    "stargazers_url": {
+                                        "type": "string"
+                                    },
+                                    "contributors_url": {
+                                        "type": "string"
+                                    },
+                                    "subscribers_url": {
+                                        "type": "string"
+                                    },
+                                    "subscription_url": {
+                                        "type": "string"
+                                    },
+                                    "commits_url": {
+                                        "type": "string"
+                                    },
+                                    "git_commits_url": {
+                                        "type": "string"
+                                    },
+                                    "comments_url": {
+                                        "type": "string"
+                                    },
+                                    "issue_comment_url": {
+                                        "type": "string"
+                                    },
+                                    "contents_url": {
+                                        "type": "string"
+                                    },
+                                    "compare_url": {
+                                        "type": "string"
+                                    },
+                                    "merges_url": {
+                                        "type": "string"
+                                    },
+                                    "archive_url": {
+                                        "type": "string"
+                                    },
+                                    "downloads_url": {
+                                        "type": "string"
+                                    },
+                                    "issues_url": {
+                                        "type": "string"
+                                    },
+                                    "pulls_url": {
+                                        "type": "string"
+                                    },
+                                    "milestones_url": {
+                                        "type": "string"
+                                    },
+                                    "notifications_url": {
+                                        "type": "string"
+                                    },
+                                    "labels_url": {
+                                        "type": "string"
+                                    },
+                                    "releases_url": {
+                                        "type": "string"
+                                    },
+                                    "deployments_url": {
+                                        "type": "string"
+                                    },
+                                    "created_at": {
+                                        "type": "string"
+                                    },
+                                    "updated_at": {
+                                        "type": "string"
+                                    },
+                                    "pushed_at": {
+                                        "type": "string"
+                                    },
+                                    "git_url": {
+                                        "type": "string"
+                                    },
+                                    "ssh_url": {
+                                        "type": "string"
+                                    },
+                                    "clone_url": {
+                                        "type": "string"
+                                    },
+                                    "svn_url": {
+                                        "type": "string"
+                                    },
+                                    "homepage": {
+                                        "type": "null"
+                                    },
+                                    "size": {
+                                        "type": "integer"
+                                    },
+                                    "stargazers_count": {
+                                        "type": "integer"
+                                    },
+                                    "watchers_count": {
+                                        "type": "integer"
+                                    },
+                                    "language": {
+                                        "type": "null"
+                                    },
+                                    "has_issues": {
+                                        "type": "boolean"
+                                    },
+                                    "has_downloads": {
+                                        "type": "boolean"
+                                    },
+                                    "has_wiki": {
+                                        "type": "boolean"
+                                    },
+                                    "has_pages": {
+                                        "type": "boolean"
+                                    },
+                                    "forks_count": {
+                                        "type": "integer"
+                                    },
+                                    "mirror_url": {
+                                        "type": "null"
+                                    },
+                                    "open_issues_count": {
+                                        "type": "integer"
+                                    },
+                                    "forks": {
+                                        "type": "integer"
+                                    },
+                                    "open_issues": {
+                                        "type": "integer"
+                                    },
+                                    "watchers": {
+                                        "type": "integer"
+                                    },
+                                    "default_branch": {
+                                        "type": "string"
+                                    },
+                                    "permissions": {
+                                        "type": "object",
+                                        "properties": {
+                                            "admin": {
+                                                "type": "boolean"
+                                            },
+                                            "push": {
+                                                "type": "boolean"
+                                            },
+                                            "pull": {
+                                                "type": "boolean"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "examples": {
+                            "application/json": {
+                                "message": "Body should be a JSON object"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string"
+                                },
+                                "documentation_url": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "examples": {
+                            "application/json": {
+                                "message": "Bad credentials",
+                                "documentation_url": "https://developer.github.com/v3"
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string"
+                                },
+                                "documentation_url": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "examples": {
+                            "application/json": {
+                                "message": "Maximum number of login attempts exceeded. Please try again later.",
+                                "documentation_url": "https://developer.github.com/v3"
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string"
+                                },
+                                "errors": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "resource": {
+                                                "type": "string"
+                                            },
+                                            "field": {
+                                                "type": "string"
+                                            },
+                                            "code": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "access_token": []
+                    }
+                ]
+            }
+        }
+    },
+    "definitions": {}
+}
