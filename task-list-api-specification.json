@@ -1,0 +1,362 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "",
+        "title": "Backendless Todo",
+        "description": ""
+    },
+    "host": "api.backendless.com",
+    "schemes": [
+        "https"
+    ],
+    "securityDefinitions": {
+        "user-token": {
+            "name": "user-token",
+            "type": "apiKey",
+            "in": "header"
+        }
+    },
+    "paths": {
+        "/{app-id}/{api-key}/data/Todo": {
+            "parameters": [
+                {
+                    "name": "app-id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "api-key",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "get": {
+                "operationId": "GET_app-id-api-key-data-Todo",
+                "summary": "Todos",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "sortBy",
+                        "in": "query",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "task": {
+                                        "type": "string"
+                                    },
+                                    "created": {
+                                        "type": "integer"
+                                    },
+                                    "___class": {
+                                        "type": "string"
+                                    },
+                                    "ownerId": {
+                                        "type": "string"
+                                    },
+                                    "updated": {
+                                        "type": "integer"
+                                    },
+                                    "objectId": {
+                                        "type": "string"
+                                    },
+                                    "__meta": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "code": {
+                                    "type": "integer"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "user-token": []
+                    }
+                ]
+            },
+            "post": {
+                "operationId": "POST_app-id-api-key-data-Todo",
+                "summary": "Todo",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "task": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "task": {
+                                    "type": "string"
+                                },
+                                "created": {
+                                    "type": "integer"
+                                },
+                                "___class": {
+                                    "type": "string"
+                                },
+                                "ownerId": {
+                                    "type": "string"
+                                },
+                                "updated": {
+                                    "type": "integer"
+                                },
+                                "objectId": {
+                                    "type": "string"
+                                },
+                                "__meta": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "code": {
+                                    "type": "integer"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "user-token": []
+                    }
+                ]
+            }
+        },
+        "/{app-id}/{api-key}/users/login": {
+            "parameters": [
+                {
+                    "name": "app-id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "api-key",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "post": {
+                "operationId": "POST_app-id-api-key-users-login",
+                "summary": "Login",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "login": {
+                                    "type": "string"
+                                },
+                                "password": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "lastLogin": {
+                                    "type": "integer"
+                                },
+                                "created": {
+                                    "type": "integer"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "___class": {
+                                    "type": "string"
+                                },
+                                "user-token": {
+                                    "type": "string"
+                                },
+                                "ownerId": {
+                                    "type": "string"
+                                },
+                                "updated": {
+                                    "type": "integer"
+                                },
+                                "email": {
+                                    "type": "string"
+                                },
+                                "objectId": {
+                                    "type": "string"
+                                },
+                                "__meta": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "code": {
+                                    "type": "integer"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/{app-id}/{api-key}/users/register": {
+            "parameters": [
+                {
+                    "name": "app-id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "api-key",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "post": {
+                "operationId": "POST_app-id-api-key-users-register",
+                "summary": "Register",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "email": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "password": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "userStatus": {
+                                    "type": "string"
+                                },
+                                "created": {
+                                    "type": "integer"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "___class": {
+                                    "type": "string"
+                                },
+                                "ownerId": {
+                                    "type": "string"
+                                },
+                                "updated": {
+                                    "type": "null"
+                                },
+                                "email": {
+                                    "type": "string"
+                                },
+                                "objectId": {
+                                    "type": "string"
+                                },
+                                "__meta": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {}
+}
