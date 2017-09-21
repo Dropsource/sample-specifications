@@ -1,0 +1,654 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "photo-save",
+        "version": "1.0.0"
+    },
+    "host": "photo-save.bubbleapps.io",
+    "basePath": "/api/1.1",
+    "schemes": [
+        "https"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "paths": {
+        "/wf/log-in": {
+            "post": {
+                "description": "Triggers the workflow log-in",
+                "parameters": [
+                    {
+                        "name": "log-in request body",
+                        "in": "body",
+                        "description": "Body of the POST request",
+                        "schema": {
+                            "$ref": "#/definitions/log-inBody"
+                        }
+                    }
+                ],
+                "tags": [
+                    "Workflow"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Workflow response",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "string",
+                                    "description": "Outcome of the workflow"
+                                },
+                                "response": {
+                                    "type": "object",
+                                    "properties": {
+                                        "user_id": {
+                                            "type": "string"
+                                        },
+                                        "token": {
+                                            "type": "string"
+                                        },
+                                        "expires": {
+                                            "type": "number",
+                                            "format": "float"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Workflow failure",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "string",
+                                    "description": "Outcome of the workflow"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "description": "Error message for the workflow"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal bug. Please file a bug report at bubble.is/bug_report with the request that triggers this bug",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "code": {
+                                    "type": "string",
+                                    "description": "Error code"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "description": "Error message for the operation"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": []
+            }
+        },
+        "/wf/post-picture": {
+            "post": {
+                "description": "Triggers the workflow post-picture",
+                "parameters": [
+                    {
+                        "name": "post-picture request body",
+                        "in": "body",
+                        "description": "Body of the POST request",
+                        "schema": {
+                            "$ref": "#/definitions/post-pictureBody"
+                        }
+                    }
+                ],
+                "tags": [
+                    "Workflow"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Workflow response",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "string",
+                                    "description": "Outcome of the workflow"
+                                },
+                                "response": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Workflow failure",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "string",
+                                    "description": "Outcome of the workflow"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "description": "Error message for the workflow"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal bug. Please file a bug report at bubble.is/bug_report with the request that triggers this bug",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "code": {
+                                    "type": "string",
+                                    "description": "Error code"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "description": "Error message for the operation"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/obj/picture/{UniqueID}": {
+            "get": {
+                "description": "Retrieve a thing of type picture by unique ID",
+                "tags": [
+                    "Data"
+                ],
+                "parameters": [
+                    {
+                        "name": "UniqueID",
+                        "in": "path",
+                        "description": "Unique ID of the picture to retrieve",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Retrieved picture",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "response": {
+                                    "$ref": "#/definitions/picture"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Database retrieval failure",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "string",
+                                    "description": "Error code"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "description": "Error message for the operation"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal bug. Please file a bug report at bubble.is/bug_report with the request that triggers this bug",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "code": {
+                                    "type": "string",
+                                    "description": "Error code"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "description": "Error message for the operation"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/obj/picture": {
+            "get": {
+                "description": "Retrieve a list of things of type picture with some optional search constraints. Retreives 100 items at most at once.",
+                "tags": [
+                    "Data"
+                ],
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Number of items to fetch (maximum is 100)",
+                        "type": "integer",
+                        "format": "int32",
+                        "default": 50
+                    },
+                    {
+                        "name": "cursor",
+                        "in": "query",
+                        "description": "Position to start from in the list",
+                        "type": "integer",
+                        "format": "int32",
+                        "default": 0
+                    },
+                    {
+                        "name": "sort_field",
+                        "in": "query",
+                        "description": "Field to sort the list on",
+                        "type": "string"
+                    },
+                    {
+                        "name": "descending",
+                        "in": "query",
+                        "description": "Sorting type: descending or ascending",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "constraints",
+                        "in": "query",
+                        "description": "Search constraints, stringified array as described [here](https://bubble.is/reference#API.get_api.search_call.search_constraints)",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Retrieved list of pictures",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "response": {
+                                    "type": "object",
+                                    "properties": {
+                                        "results": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/definitions/picture"
+                                            }
+                                        },
+                                        "cursor": {
+                                            "type": "number",
+                                            "format": "float",
+                                            "description": "Rank of the first item in the list"
+                                        },
+                                        "count": {
+                                            "type": "number",
+                                            "format": "float",
+                                            "description": "Number of items in the current response. It is the minimum between the actual length of the list and the sent limit (or 100 if you did not specify a limit)."
+                                        },
+                                        "remaining": {
+                                            "type": "number",
+                                            "format": "float",
+                                            "description": "Number of remaining items after the current response. Useful to fetch more items."
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Database retrieval failure",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "string",
+                                    "description": "Error code"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "description": "Error message for the operation"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Authorization failure",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "statusCode": {
+                                    "type": "string",
+                                    "description": "Outcome of the auth"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "description": "Error message for the auth"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal bug. Please file a bug report at bubble.is/bug_report with the request that triggers this bug",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "code": {
+                                    "type": "string",
+                                    "description": "Error code"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "description": "Error message for the operation"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/obj/user/{UniqueID}": {
+            "get": {
+                "description": "Retrieve a thing of type user by unique ID",
+                "tags": [
+                    "Data"
+                ],
+                "parameters": [
+                    {
+                        "name": "UniqueID",
+                        "in": "path",
+                        "description": "Unique ID of the user to retrieve",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Retrieved user",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "response": {
+                                    "$ref": "#/definitions/user"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Database retrieval failure",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "string",
+                                    "description": "Error code"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "description": "Error message for the operation"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal bug. Please file a bug report at bubble.is/bug_report with the request that triggers this bug",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "code": {
+                                    "type": "string",
+                                    "description": "Error code"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "description": "Error message for the operation"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/obj/user": {
+            "get": {
+                "description": "Retrieve a list of things of type user with some optional search constraints. Retreives 100 items at most at once.",
+                "tags": [
+                    "Data"
+                ],
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Number of items to fetch (maximum is 100)",
+                        "type": "integer",
+                        "format": "int32",
+                        "default": 50
+                    },
+                    {
+                        "name": "cursor",
+                        "in": "query",
+                        "description": "Position to start from in the list",
+                        "type": "integer",
+                        "format": "int32",
+                        "default": 0
+                    },
+                    {
+                        "name": "sort_field",
+                        "in": "query",
+                        "description": "Field to sort the list on",
+                        "type": "string"
+                    },
+                    {
+                        "name": "descending",
+                        "in": "query",
+                        "description": "Sorting type: descending or ascending",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "constraints",
+                        "in": "query",
+                        "description": "Search constraints, stringified array as described [here](https://bubble.is/reference#API.get_api.search_call.search_constraints)",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Retrieved list of users",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "response": {
+                                    "type": "object",
+                                    "properties": {
+                                        "results": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/definitions/user"
+                                            }
+                                        },
+                                        "cursor": {
+                                            "type": "number",
+                                            "format": "float",
+                                            "description": "Rank of the first item in the list"
+                                        },
+                                        "count": {
+                                            "type": "number",
+                                            "format": "float",
+                                            "description": "Number of items in the current response. It is the minimum between the actual length of the list and the sent limit (or 100 if you did not specify a limit)."
+                                        },
+                                        "remaining": {
+                                            "type": "number",
+                                            "format": "float",
+                                            "description": "Number of remaining items after the current response. Useful to fetch more items."
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Database retrieval failure",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "string",
+                                    "description": "Error code"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "description": "Error message for the operation"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal bug. Please file a bug report at bubble.is/bug_report with the request that triggers this bug",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "code": {
+                                    "type": "string",
+                                    "description": "Error code"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "description": "Error message for the operation"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "picture": {
+            "type": "object",
+            "properties": {
+                "Image": {
+                    "type": "string",
+                    "description": "'Image' field of the current Picture"
+                },
+                "Latitude": {
+                    "type": "number",
+                    "format": "float",
+                    "description": "'Latitude' field of the current Picture"
+                },
+                "Longitude": {
+                    "type": "number",
+                    "format": "float",
+                    "description": "'Longitude' field of the current Picture"
+                },
+                "Created Date": {
+                    "type": "string",
+                    "format": "date",
+                    "description": "'Created Date' field of the current Picture"
+                },
+                "Modified Date": {
+                    "type": "string",
+                    "format": "date",
+                    "description": "'Modified Date' field of the current Picture"
+                },
+                "Created By": {
+                    "type": "string",
+                    "description": "'Created By' field of the current Picture ('user' represented by a unique ID)"
+                },
+                "unique ID": {
+                    "type": "string",
+                    "description": "'unique ID' field of the current Picture"
+                }
+            }
+        },
+        "user": {
+            "type": "object",
+            "properties": {
+                "Created Date": {
+                    "type": "string",
+                    "format": "date",
+                    "description": "'Created Date' field of the current User"
+                },
+                "Modified Date": {
+                    "type": "string",
+                    "format": "date",
+                    "description": "'Modified Date' field of the current User"
+                },
+                "unique ID": {
+                    "type": "string",
+                    "description": "'unique ID' field of the current User"
+                }
+            }
+        },
+        "log-inBody": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "email",
+                "password"
+            ]
+        },
+        "post-pictureBody": {
+            "type": "object",
+            "properties": {
+                "pic": {
+                    "type": "object",
+                    "properties": {
+                    	"contents": {
+                    		"type":"string"
+                    	},
+                    	"filename": {
+                    		"type":"string",
+                    		"default":"image.jpg"
+                    	}
+                    }
+                },
+                "lat": {
+                    "type": "number",
+                    "format": "float"
+                },
+                "lng": {
+                    "type": "number",
+                    "format": "float"
+                }
+            },
+            "required": [
+                "pic",
+                "lat",
+                "lng"
+            ]
+        }
+    },
+    "tags": [
+        {
+            "name": "Workflow",
+            "description": "Use this to trigger a workflow"
+        },
+        {
+            "name": "Data",
+            "description": "Use this to fetch data"
+        }
+    ],
+    "securityDefinitions": {
+        "api_token": {
+            "type": "apiKey",
+            "name": "api_token",
+            "in": "query"
+        }
+    },
+    "security": [
+        {
+            "api_token": []
+        }
+    ]
+}
