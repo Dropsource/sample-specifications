@@ -1,0 +1,378 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "",
+        "title": "Sheetsu Data",
+        "description": ""
+    },
+    "host": "sheetsu.com",
+    "basePath": "/apis/v1.0",
+    "schemes": [
+        "https"
+    ],
+    "securityDefinitions": {
+        "api_key": {
+            "type": "basic"
+        }
+    },
+    "paths": {
+        "/94441cadfd3a": {
+            "delete": {
+                "operationId": "DELETE_94441cadfd3a",
+                "summary": "Destroy Row",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "string"
+                                },
+                                "task": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                }
+                            },
+                            "example": {
+                                "id": "1",
+                                "task": "do stuff",
+                                "name": "Sue"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "string"
+                                    },
+                                    "task": {
+                                        "type": "string"
+                                    },
+                                    "assignee": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        },
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "id": "1",
+                                    "task": "do stuff",
+                                    "assignee": "Sue"
+                                }
+                            ]
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            },
+            "post": {
+                "operationId": "POST_94441cadfd3a",
+                "summary": "Add Row",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "string"
+                                },
+                                "task": {
+                                    "type": "string"
+                                },
+                                "assignee": {
+                                    "type": "string"
+                                }
+                            },
+                            "example": {
+                                "id": "12",
+                                "task": "do stuff",
+                                "assignee": "Sue"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "string"
+                                },
+                                "task": {
+                                    "type": "string"
+                                },
+                                "assignee": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "examples": {
+                            "application/json": {
+                                "id": "",
+                                "task": "do stuff",
+                                "assignee": "Sue"
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            },
+            "get": {
+                "operationId": "GET_94441cadfd3a",
+                "summary": "Get Sheet",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "string"
+                                    },
+                                    "task": {
+                                        "type": "string"
+                                    },
+                                    "assignee": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        },
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "id": "1",
+                                    "task": "do stuff",
+                                    "assignee": "Sue"
+                                }
+                            ]
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/94441cadfd3a/{column-name}/{value}": {
+            "parameters": [
+                {
+                    "name": "column-name",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "value",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "delete": {
+                "operationId": "DELETE_94441cadfd3a-column-name-value",
+                "summary": "Delete Row",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "204": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            },
+            "patch": {
+                "operationId": "PATCH_94441cadfd3a-column-name-value",
+                "summary": "Update Row",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "string"
+                                },
+                                "task": {
+                                    "type": "string"
+                                },
+                                "assignee": {
+                                    "type": "string"
+                                }
+                            },
+                            "example": {
+                                "id": "change",
+                                "task": "do stuff",
+                                "assignee": "Sue"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "string"
+                                    },
+                                    "task": {
+                                        "type": "string"
+                                    },
+                                    "assignee": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        },
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "id": "1",
+                                    "task": "do stuff",
+                                    "assignee": "Sue"
+                                }
+                            ]
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/94441cadfd3a/search": {
+            "get": {
+                "operationId": "GET_94441cadfd3a-search",
+                "summary": "Search Sheet",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "task",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "assignee",
+                        "in": "query",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "string"
+                                    },
+                                    "task": {
+                                        "type": "string"
+                                    },
+                                    "assignee": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        },
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "id": "1",
+                                    "task": "do stuff",
+                                    "assignee": "Sue"
+                                }
+                            ]
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        }
+    },
+    "definitions": {}
+}
