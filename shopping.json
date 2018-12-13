@@ -1,0 +1,66 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "",
+        "title": "Shopping",
+        "description": ""
+    },
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "host": "acttafdk9jr4ftpqh-mock.stoplight-proxy.io",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/basket": {
+            "get": {
+                "operationId": "GET_basket",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "item_name": {
+                                        "type": "string"
+                                    },
+                                    "item_cost": {
+                                        "type": "integer"
+                                    },
+                                    "quantity": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        },
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "item_name": "Glass Vase",
+                                    "quantity": 3,
+                                    "item_cost": 999
+                                },
+                                {
+                                    "item_name": "Bookcase",
+                                    "quantity": 1,
+                                    "item_cost": 9995
+                                },
+                                {
+                                    "item_name": "Ornament",
+                                    "quantity": 2,
+                                    "item_cost": 1250
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
